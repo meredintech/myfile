@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Journal - Vanilla JS</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 20px; }
+        .trade-form { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        input, select, button { padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        button { background-color: #28a745; color: white; cursor: pointer; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .profit { color: green; }
+        .loss { color: red; }
+    </style>
+</head>
+<body>
+
+    <h1>Trading Journal</h1>
+ <fieldset>
+     <legend>Add Trade</legend>
+    <form id="tradeForm" class="trade-form">
+        <input type="text" id="asset" placeholder="Asset (e.g. XAU/USD)" required>
+        <select id="strategy">
+            <option >Buy</option>
+            <option>Sell</option>
+        </select>
+        <select id="strategy">
+            <option value="SMC">SMC (Smart Money Concepts)</option>
+            <option value="ICT">ICT (Inner Circle Trader)</option>
+            <option value="Liquidity Sweep">Liquidity Sweep</option>
+            <option value="Price Action">Price Action</option>
+        </select>
+        <input type="number" step="0.0001" id="entry_price" placeholder="Entry Price" required>
+        <input type="number" step="0.0001" id="stop_loss" placeholder="Stop Loss" required>
+        <input type="number" step="0.0001" id="exit_price" placeholder="Exit Price" required>
+        <input type="number" step="0.0001" id="lot_size" placeholder="Lot Size" required>
+        <input type="number" step="0.0001" id="notes" placeholder="Notes/Emotion" required>
+        <input type="number" step="0.01" id="pnl" placeholder="Profit/Loss ($)" required>
+        <button type="submit">Add Trade</button>
+    </form>
+ </fieldset> 
+    <h2>Recent Trades</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Asset</th>
+                <th>Strategy</th>
+                <th>Entry</th>
+                <th>Exit</th>
+                <th>P&L</th>
+            </tr>
+        </thead>
+        <tbody id="tradesTableBody">
+        
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
