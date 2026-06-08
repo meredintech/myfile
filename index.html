@@ -1,63 +1,246 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trading Journal - Vanilla JS</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 20px; }
-        .trade-form { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-        input, select, button { padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
-        button { background-color: #28a745; color: white; cursor: pointer; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
-        th { background-color: #f4f4f4; }
-        .profit { color: green; }
-        .loss { color: red; }
-    </style>
+    <title>Mered | Portfolio</title>
+    <meta name="description" content="Portfolio of Mered Haile Berhe - Full-Stack Developer, Graphic Designer & Financial Market Trader">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <h1>Trading Journal</h1>
- <fieldset>
-     <legend>Add Trade</legend>
-    <form id="tradeForm" class="trade-form">
-        <input type="text" id="asset" placeholder="Asset (e.g. XAU/USD)" required>
-        <select id="strategy">
-            <option >Buy</option>
-            <option>Sell</option>
-        </select>
-        <select id="strategy">
-            <option value="SMC">SMC (Smart Money Concepts)</option>
-            <option value="ICT">ICT (Inner Circle Trader)</option>
-            <option value="Liquidity Sweep">Liquidity Sweep</option>
-            <option value="Price Action">Price Action</option>
-        </select>
-        <input type="number" step="0.0001" id="entry_price" placeholder="Entry Price" required>
-        <input type="number" step="0.0001" id="stop_loss" placeholder="Stop Loss" required>
-        <input type="number" step="0.0001" id="exit_price" placeholder="Exit Price" required>
-        <input type="number" step="0.0001" id="lot_size" placeholder="Lot Size" required>
-        <input type="number" step="0.0001" id="notes" placeholder="Notes/Emotion" required>
-        <input type="number" step="0.01" id="pnl" placeholder="Profit/Loss ($)" required>
-        <button type="submit">Add Trade</button>
-    </form>
- </fieldset> 
-    <h2>Recent Trades</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Asset</th>
-                <th>Strategy</th>
-                <th>Entry</th>
-                <th>Exit</th>
-                <th>P&L</th>
-            </tr>
-        </thead>
-        <tbody id="tradesTableBody">
-        
-        </tbody>
-    </table>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">MR<span>.</span></a>
+            
+            <div class="nav-menu">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                
+                <button id="theme-toggle" class="theme-btn">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+            </div>
 
-    <script src="script.js"></script>
+            <button id="mobile-menu-btn" class="mobile-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="mobile-menu hidden">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+            <button id="mobile-theme-toggle" class="btn-theme-mobile">Toggle Theme</button>
+        </div>
+    </nav>
+
+    <header id="home" class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-content" data-aos="fade-right">
+                <p class="hero-mono">Hi, my name is</p>
+                <h1 class="hero-title">Mered Haile.</h1>
+                <h2 class="hero-subtitle">I build systems and analyze markets.</h2>
+                <p class="hero-desc">
+                    I am a multifaceted professional blending <span class="highlight-blue">Full-Stack Development</span>, <span class="highlight-green">Graphic Design</span>, and <span class="highlight-blue">Financial Market Trading</span>. I engineer data-driven web applications and leverage technical analysis for market insights.
+                </p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn btn-outline">View Projects</a>
+                    <a href="#" class="btn btn-filled">Download CV</a>
+                </div>
+            </div>
+            <div class="hero-graphic-wrapper" data-aos="fade-left" data-aos-delay="200">
+                <div class="abstract-graphic">
+                    <div class="circle circle-1"></div>
+                    <div class="circle circle-2"></div>
+                    <div class="circle circle-center">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="about-section section-padding">
+        <div class="container">
+            <h2 class="section-heading" data-aos="fade-up">
+                <span>01.</span> About Me
+            </h2>
+            <div class="about-grid">
+                <div class="about-text" data-aos="fade-up" data-aos-delay="100">
+                    <p>Hello! I'm Mered, a professional who thrives at the intersection of technology, design, and finance. My journey started with a deep curiosity for how digital experiences are built, which led me into Full-Stack Development.</p>
+                    <p>Over the years, I've expanded my skill set to include Graphic Design, ensuring the applications I build not only function flawlessly but look visually compelling. Simultaneously, my analytical nature drew me to Financial Market Trading, where I apply technical analysis, SMC (Smart Money Concepts), and data visualization.</p>
+                    <p>My career goal is to architect sophisticated, user-centric fintech applications and trading tools that bridge the gap between complex market data and intuitive user interfaces.</p>
+                </div>
+                <div class="about-image-wrapper" data-aos="fade-up" data-aos-delay="200">
+                    <div class="profile-frame">
+                        <div class="profile-placeholder">Profile Image</div>
+                    </div>
+                    <div class="profile-shadow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section-padding">
+        <div class="container">
+            <h2 class="section-heading" data-aos="fade-up">
+                <span>02.</span> Skills & Certifications
+            </h2>
+            <div class="skills-grid">
+                <div data-aos="fade-right">
+                    <h3 class="skills-subheading dev-title"><i class="fas fa-code"></i> Development</h3>
+                    <div class="skills-stack">
+                        <div class="skill-bar">
+                            <div class="skill-info"><span>HTML/CSS</span><span>95%</span></div>
+                            <div class="progress-track"><div class="progress-fill fill-green" style="width: 95%"></div></div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info"><span>JavaScript</span><span>90%</span></div>
+                            <div class="progress-track"><div class="progress-fill fill-green" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info"><span>React</span><span>85%</span></div>
+                            <div class="progress-track"><div class="progress-fill fill-blue" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info"><span>PHP</span><span>88%</span></div>
+                            <div class="progress-track"><div class="progress-fill fill-blue" style="width: 88%"></div></div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info"><span>MySQL</span><span>85%</span></div>
+                            <div class="progress-track"><div class="progress-fill fill-blue" style="width: 85%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-left">
+                    <h3 class="skills-subheading tools-title"><i class="fas fa-pen-nib"></i> Design & Tools</h3>
+                    <div class="tools-grid">
+                        <div class="tool-card"><i class="fab fa-git-alt icon-git"></i> <span>Git</span></div>
+                        <div class="tool-card"><i class="fab fa-github"></i> <span>GitHub</span></div>
+                        <div class="tool-card"><i class="fab fa-figma icon-figma"></i> <span>Figma</span></div>
+                        <div class="tool-card"><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="PS"> <span>Photoshop</span></div>
+                        <div class="tool-card"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg" alt="AI"> <span>Illustrator</span></div>
+						<div class="tool-card"><img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Adobe_InDesign_CC_icon.svg" alt="InDesign"><span>InDesign</span></div>
+						<div class="tool-card"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Adobe_XD_CC_icon.svg" alt="Adobe XD"><span>Adobe XD</span></div>
+	
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section section-padding">
+        <div class="container">
+            <h2 class="section-heading" data-aos="fade-up">
+                <span>03.</span> Some Things I've Built
+            </h2>
+            <div class="cards-grid">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-banner bg-overlay-blue"><i class="fas fa-book-open"></i></div>
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h3>Trading Journal System</h3>
+                            <div class="card-links"><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+                        </div>
+                        <p>A comprehensive web application for traders to log entries, analyze win rates, and track setups based on Smart Money Concepts (SMC).</p>
+                        <ul class="card-tags"><li>PHP</li><li>MySQL</li><li>JS</li><li>CSS3</li></ul>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-banner bg-overlay-green"><i class="fas fa-chart-pie"></i></div>
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h3>Market Dashboard</h3>
+                            <div class="card-links"><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+                        </div>
+                        <p>A real-time financial market dashboard visualizing stock, crypto, and forex data using interactive charting libraries.</p>
+                        <ul class="card-tags"><li>React</li><li>Chart.js</li><li>API</li></ul>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-banner bg-overlay-blue"><i class="fab fa-bitcoin"></i></div>
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h3>Crypto Price Tracker</h3>
+                            <div class="card-links"><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+                        </div>
+                        <p>Live cryptocurrency price tracking application with historical data views, portfolio management, and alert systems.</p>
+                        <ul class="card-tags"><li>HTML</li><li>JS</li><li>CoinGecko API</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section-padding">
+        <div class="container">
+            <h2 class="center-heading" data-aos="fade-up">Services I Offer</h2>
+            <div class="services-wrapper">
+                <div class="service-card s-blue" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-laptop-code"></i><h3>Web Development</h3><p>Custom, responsive, and performant web applications using modern stacks.</p>
+                </div>
+                <div class="service-card s-green" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-bezier-curve"></i><h3>Graphic Design</h3><p>Brand identities, digital assets, and professional layouts tailored to your vision.</p>
+                </div>
+                <div class="service-card s-blue" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-mobile-alt"></i><h3>UI/UX Design</h3><p>Intuitive user interfaces focused on conversion and seamless journeys.</p>
+                </div>
+                <div class="service-card s-green" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-database"></i><h3>Database Design</h3><p>Structured, scalable, and secure relational database architectures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section section-padding">
+        <div class="container text-center max-w-md">
+            <h2 class="contact-sub" data-aos="fade-up">04. What's Next?</h2>
+            <h3 class="contact-main-heading" data-aos="fade-up" data-aos-delay="100">Get In Touch</h3>
+            <p class="contact-text" data-aos="fade-up" data-aos-delay="200">Whether you have a question, a project idea, or just want to connect over tech and trading, my inbox is always open.</p>
+            
+            <form class="contact-form" data-aos="fade-up" data-aos-delay="300">
+                <div class="form-row">
+                    <input type="text" placeholder="Name" class="form-control" required>
+                    <input type="email" placeholder="Email" class="form-control" required>
+                </div>
+                <input type="text" placeholder="Subject" class="form-control" required>
+                <textarea placeholder="Message" rows="5" class="form-control" required></textarea>
+                <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container footer-container">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>Designed & Built by Mered Haile </p>
+            <p class="copyright">&copy; <span id="year"></span> All Rights Reserved.</p>
+            <a href="#home" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 100 });
+    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
